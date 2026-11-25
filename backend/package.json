@@ -23,9 +23,9 @@
     "@prisma/engines@6.19.3": true
   },
   "devDependencies": {
-    "@prisma/client": "^6.19.3",
+  "@prisma/client": "7.10.1",
     "nodemon": "^3.1.14",
-    "prisma": "^6.19.3"
+  "prisma": "7.10.1"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
