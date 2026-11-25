@@ -125,9 +125,6 @@ export default function Login() {
                 </Button>
               </form>
 
-              <p className="login-page__hint">
-                Compte de démonstration : admin@lms.local / Admin@123
-              </p>
             </div>
           </div>
         </div>
