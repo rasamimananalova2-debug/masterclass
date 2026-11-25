@@ -24,6 +24,7 @@ const io = new Server(httpServer, {
       process.env.CLIENT_URL || 'http://localhost:5173',
       'http://localhost:5173',
       'http://localhost:3000',
+      'https://masterclass-lms.vercel.app', // ✅ Ajout de votre domaine Vercel
     ],
     credentials: true,
     methods: ['GET', 'POST'],
@@ -39,13 +40,19 @@ socketHandler(io);
 setIO(io);
 app.set('io', io);
 
+// ✅ Route de secours pour le Health Check de Render (évite le 404 sur HEAD /)
+app.get('/', (req, res) => {
+  res.status(200).send('API LMS opérationnelle');
+});
+
 // ═══════════════════════════════════════════════════════════
 // DÉMARRER LE SERVEUR
 // ═══════════════════════════════════════════════════════════
-httpServer.listen(PORT, async () => {
+// ✅ Ajout de '0.0.0.0' pour écouter sur toutes les interfaces réseau
+httpServer.listen(PORT, '0.0.0.0', async () => {
   console.log('');
   console.log('════════════════════════════════════════════════════');
-  console.log(`🚀 Serveur LMS démarré sur http://localhost:${PORT}`);
+  console.log(`🚀 Serveur LMS démarré sur le port ${PORT}`);
   console.log(`📊 Environnement : ${process.env.NODE_ENV}`);
   console.log(`🔌 Socket.IO actif`);
   console.log('════════════════════════════════════════════════════');
@@ -76,7 +83,5 @@ process.on('SIGTERM', async () => {
   await prisma.$disconnect();
   httpServer.close(() => process.exit(0));
 });
-
-
 
 module.exports = { app, io, httpServer };
