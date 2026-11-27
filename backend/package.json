@@ -18,7 +18,7 @@
     "esbuild@0.28.2": true,
     "msgpackr-extract@3.0.4": true,
     "workerd@1.20260704.1": true,
-    "@prisma/client@6.19.3": true,
+      "@prisma/client": "7.10.1"
     "prisma@6.19.3": true,
     "@prisma/engines@6.19.3": true
   },
@@ -49,6 +49,7 @@
     "pdfkit": "^0.20.2",
     "socket.io": "^4.8.4",
     "stripe": "^22.6.2",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "@prisma/client": "7.10.1"
   }
 }
